@@ -6,7 +6,7 @@
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
 <style>
 #chartContainer {    
-	float: left;
+    float: left;
 	top:10px;
 	left:10px;
 	width:100%;
@@ -33,9 +33,9 @@
 <div class="textclass"; width="100%"; height="400px";>Information reported in the assessor’s database shows that 20 percent of land in Arlington's business districts is used for residential purposes, including single-family homes and apartment units. Arlington allows multifamily housing by special permit in most of the business districts, and some of the apartments and townhouses located on business zoned land came about because of this provision.<br> Similarly, much of Arlington’s industrially zoned land is no longer used for industrial purposes. While the town has zoned about 49 acres for industrial development, a comparison of the zoning map and assessor’s records shows that only fourteen acres (about 29 percent) of the Industrial District is actually used for manufacturing, warehouse/distribution, storage, and other industrial types of activity. The belief that commercial and industrial properties have been rezoned as residential is a common misperception in Arlington.</div>
 <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", "100%", "100%");
-    d3.csv("https://raw.githubusercontent.com/dfieldsarlington/landusetest/gh-pages/LandUse.csv", function (data) {
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/landuse/landuse.csv", function (data) {
      var myChart = new dimple.chart(svg, data);
-        myChart.setBounds("15%", "5%", "50%", "80%")
+        myChart.setBounds("10%", "5%", "50%", "82%")
         myChart.addMeasureAxis("x", "Acres");
         myChart.addMeasureAxis("y", "# of Properties");
 		myChart.addMeasureAxis("z", "# of Units");
@@ -47,7 +47,7 @@
 		myChart.assignColor("B3 - Village Business", "#A80000");
 		myChart.assignColor("B4 - Vehicular Oriented Business", "#FF73DF");
 		myChart.assignColor("B5 - Central Business", "#E600A9");
-        var LineLegend = myChart.addLegend ("70%", "10%", "10%", "90%", "right");
+        var LineLegend = myChart.addLegend ("80%", "15%", "10%", "90%", "right");
 	  LineLegend.fontSize = "auto";
 		var LineStoryboard = myChart.setStoryboard("Zone");
 		LineStoryboard.categoryFields = [null];
