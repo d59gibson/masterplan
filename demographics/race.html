@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<title>Arlington Race</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+
+<style>
+body {
+    background-color: rgb(252,245,223);
+}
+    
+#PieChart {    
+	float: left;
+
+	width: 100%;
+	height: 300px;
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<div id="PieChart"></div>
+
+  <script type="text/javascript">
+  //Start Pie Chart
+		var svgPie = dimple.newSvg("#PieChart", "100%", "100%");
+		var PieChart;
+            d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/race.csv", function (data) {
+		dimple.filterData(data, "Race Year", [("1960", "1970", "1980", "1990", "2000", "2010")]);
+		var PieChart = new dimple.chart(svgPie, data);
+		PieChart.setBounds("5%", "10%", "70%", "65%");
+		PieChart.addMeasureAxis("p", "Race Percent");
+		var ring = PieChart.addSeries("Race", dimple.plot.pie);
+		ring.innerRadius = "50%";
+		var PieLegend = PieChart.addLegend ("2%", "68%", "15%", "25%", "left");
+		PieLegend.fontSize = "auto";
+		var PieStoryboard = PieChart.setStoryboard("Race");
+		PieStoryboard.categoryFields = ["Race Year"];
+		PieChart.draw();
+	    PieChart.legends = [];
+        var filterValues = dimple.getUniqueValues(data, "Race");
+        PieLegend.shapes.selectAll("rect")
+          .on("click", function (e) {
+            var hide = false;
+            var newFilters = [];
+            filterValues.forEach(function (f) {
+              if (f === e.aggField.slice(-1)[0]) {
+                hide = true;
+              } else {
+                newFilters.push(f);
+              }
+            });
+            if (hide) {
+              d3.select(this).style("opacity", 0.2);
+            } else {
+              newFilters.push(e.aggField.slice(-1)[0]);
+              d3.select(this).style("opacity", 0.8);
+            }
+            filterValues = newFilters;
+            PieChart.data = dimple.filterData(data, "Race", filterValues);
+            PieChart.draw(800);
+          });
+      });
+  </script>
+ </body>
+</html>

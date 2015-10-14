@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+<head>
+<title>Arlington Demographics</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+
+<style>
+body {
+    background-color: rgb(252,245,223);
+}
+p {
+    font: 14px Arial,Helvetica,sans-serif;
+	color: #545454;
+	}
+
+
+#LineChart {    
+	float: left;
+	top:5px;
+	width: 100%;
+	height: 325px
+}	
+
+</style>
+</head>
+<body>
+<div id="LineChart"></div>
+
+  <script type="text/javascript">
+//Start Line Chart
+var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/totpop.csv", function (data) {
+      dimple.filterData(data, "Year", "1960");
+      var LineChart = new dimple.chart(svgLine, data);
+      var x = LineChart.addCategoryAxis("x", "Year");
+      x.addOrderRule("Year");
+      LineChart.addMeasureAxis("y", "Population");
+      var s = LineChart.addSeries(null, dimple.plot.line);
+	  s.interpolation = "cardinal";
+      s.lineMarkers = true;
+	  s.lineWeight = 2;
+	  LineChart.draw();
+		var LineStoryboard = LineChart.setStoryboard("Year");
+		LineStoryboard.categoryFields = [null];
+		LineChart.draw(800);
+		LineStoryboard.storyLabel.remove();
+    });
+
+
+</script>
+</body>
+</html>
