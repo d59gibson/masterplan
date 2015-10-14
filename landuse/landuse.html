@@ -1,166 +1,85 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
 <style>
-    #pane, #pop {
-    padding: 2px;
-    text-align: left;
-    cursor: pointer;
-    font: 12px/18px Arial,Helvetica,sans-serif;
-    color: #5e1315;
-    line-height: 18px
-    }
-    #pane {
-    padding: 2px;
-    display: none;
-    text-align: left;
-    width: 100%;
-    cursor: pointer;
-    line-height: 18px
-    font: 12px/18px Arial,Helvetica,sans-serif;
-    color: #545454;
-	border-bottom: solid 1px #5E1315;
-    }
-    #pane2, #pop2 {
-    padding: 2px;
-    text-align: left;
-    cursor: pointer;
-    font: 12px/18px Arial,Helvetica,sans-serif;
-    color: #5e1315;
-    line-height: 18px
-    }
-    #pane2 {
-    padding: 2px;
-    display: none;
-    text-align: left;
-    width: 100%;
-    cursor: pointer;
-    line-height: 18px
-    font: 12px/18px Arial,Helvetica,sans-serif;
-    color: #545454;
-	border-bottom: solid 1px #5E1315;
-    }
-    #pane3, #pop3 {
-    padding: 2px;
-    text-align: left;
-    cursor: pointer;
-    font: 12px/18px Arial,Helvetica,sans-serif;
-    color: #5e1315;
-    line-height: 18px
-    }
-    #pane3 {
-    padding: 2px;
-    display: none;
-    text-align: left;
-    width: 100%;
-    cursor: pointer;
-    line-height: 18px
-    font: 12px/18px Arial,Helvetica,sans-serif;
-    color: #545454;
-	border-bottom: solid 1px #5E1315;
-    }
-    #nav {
-    position: relative;
-    width: 100%;
-    margin-top: 10px;
-    padding: 2px;
-    margin-left: 2px;
-    }
-    #nextpage {
-    float: right;
-    }
-    #rightnav {
-    float: right;
-    width: 20%;
-    }
-    .map {
-    rgb(252,245,223);
-    border: solid 1px #c0504d;
-    float: right;
-    margin-top: 5px;
-    padding: 2px;
-    margin-left: 2px;
-    width: 150px
-    }
+#chartContainer {    
+	float: left;
+	top:10px;
+	left:10px;
+	width:100%;
+	height: 450px;
+	background-color: rgb(252,245,223);
+}
+.textclasshead {
+  float: center;
+  font: 16px Arial,Helvetica,sans-serif;
+  text-align: center;
+  color: #545454;
+  }
+  .textclass {
+  float: left;
+  font: 10/16px Arial,Helvetica,sans-serif;
+  color: #545454;
+  }
 </style>
-<table>
-    <tbody>
-        <tr>
-            <td>As an element of the Master Plan, Land Use connects all the other elements because land use planning incorporates all the&nbsp;land in Town, and the Town’s vision for it. Land use refers to the location, type, and intensity of a community’s residential,&nbsp;commercial, industrial, and institutional development, along with roads, open land, and water. Patterns of development vary by&nbsp;the land and water resources that support them, the eras in which growth occurred, and the evolution of a town’s transportation&nbsp;infrastructure. The ages of buildings in each part of a town usually correlate with changes in land use patterns. Similarly, the&nbsp;placement of buildings in relation to the street and to each other tends to be inseparable from their age and whether they were&nbsp;constructed before or after the adoption of zoning. Furthermore, a town’s development pattern and shape sometimes hint at its&nbsp;annexation history, or exchanges of land with adjacent cities and towns.&nbsp;</td>
-            <td style="text-align: left; vertical-align: top;">
-            <table style="width: 165px; height: 91px;">
-                <tbody>
-                    <tr>
-                        <td>
-                        <div id="rightnav">
-                        <div class="map"><a href="http://www.mapsonline.net/arlingtonma/masterplanlanduse.html" target="_blank">Map 3 Land Use</a></div>
-                        <div class="map"><a href="/home/showdocument?id=26134" target="_blank"><img src="/home/showimage?id=4346" alt="Adobe_PDF_file_icon_24x24" style="width: 18px; height: 18px;"></a>&nbsp;&nbsp;<a href="https://arlingtonma.gov/Home/ShowDocument?id=26371" target="_blank">Land Use</a></div>
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Home/ShowImage?id=4385" alt="Land Use Icon" style="width: 110px; float: right; border-width: 0px; border-style: solid; height: 93px; margin-top: 7px; margin-right: 15px;" usemap="#rade_img_map_1442522001086" border="0">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div id="pop"><span style="text-decoration: underline;">Land Use Goals</span></div>
-<div id="pane">1. Balance housing growth with other land uses that support residential services and amenities.<br>
-<br>
-2. Encourage development that enhances the quality of Arlington's natural resources and built environment.<br>
-<br>
-3. Attract development that supports and expands the economic, cultural, and civic purposes of Arlignton's commercial areas.</div>
-<br>
-<div id="pop2"><span style="text-decoration: underline;">Land Use Key Findings</span></div>
-<div id="pane2">1. Massachusetts Avenue has the capacity for growth. It can support mixed-use development commensurate with its function as Arlington’s primary commercial corridor. Massachusetts Avenue is accessible to neighborhoods throughout the town, it has frequent bus service, bicycle routes, and good walkability. Increased density through greater building heights and massing would benefit the corridor from an urban design perspective and benefit the town from a fiscal perspective.<br>
-<br>
-2. Arlington has a limited number of vacant, developable land parcels, e.g., at Poet’s Corner on Route 2, and the Mugar property next to Thorndike Field and Alewife Brook. The conservation and development opportunities on these and other sites matter, but Arlington’s growth management priorities must be Massachusetts Avenue, Broadway, and the Mill Brook area. Addressing Arlington’s critical environmental challenges will hinge, in part, on the policies it adopts to guide and regulate future development in these locations.<br>
-<br>
-3. Arlington has many unique neighborhoods with recognizable features in topography, housing typology, and streetscape characteristics. Neighborhoods tend to be identified in terms of their physical and cultural relationship with Massachusetts Avenue, the quintessential “Main Street” of Arlington. Massachusetts Avenue serves many neighborhoods along its length with civic amenities, local businesses, and public transportation.<br>
-<br>
-4. The Mill Brook is a hidden gem. It has the potential to spawn transformative change along Massachusetts Avenue west of the center of town. Nearby properties are poised for redevelopment due to their current use, age, and ownership, their location adjacent to the waterway, and their proximity to the Minuteman Bikeway and Massachusetts Avenue.</div>
-<br>
-<p>
-Zoning was introduced to cities and towns in the early twentieth century. This method of regulating land use is intended to define and manage the growth and character of communities, preserving and protecting open space, and guiding future capacity. As a result of Arlington’s history, its land use patterns are reflected in both organic and regulated forms.</p>
-<p>Arlington is a predominantly residential suburb of Boston. Three major business districts along Massachusetts Avenue are surrounded by walkable neighborhoods. Commercial, industrial, civic, and cultural activity is focused in the middle of town, along Massachusetts Avenue and Broadway (see Map 3 for Arlington's current land use patterns). It’s difficult to tell from Arlington’s zoning map what the community wants today since our zoning is a snapshot of the uses and buildings that were in place in 1974, when the zoning bylaw was adopted (see Map 3 for Arlington's zoning in 2014). For example: (1) in the short distance between Prentiss Road and Brattle Street, properties are governed by four different zoning districts, with different allowed uses and different dimensional rules; (2) several blocks on Forest Street between Massachusetts Avenue and the Minuteman Bikeway are governed by five zoning districts; (3) Massachusetts Avenue has several single parcels surrounded by different zoning districts on either side. This patchwork of zoning districts is confusing for property owners, neighboring residents, and tenants, making it hard to predict what uses are allowed and what might be possible or desirable in the future for building size, design, or uses. Further, the Town’s special permit requirement for most uses may inhibit businesses from growing or locating here. Property in business districts can now be converted to residential uses by special permit, thereby reducing commercial uses and worsening our tax base imbalance.  </p>
-<p>To increase economic development, resident input calls for encouraging new office space, where appropriate, and for mixed-use buildings in nonresidential areas. Mixed-use development generally combines commercial space on lower floors with housing on upper floors to foster eclectic and walkable business districts in areas served by public transit. Arlington’s existing zoning encourages mixed-use development in Arlington Heights, Arlington Center, and Capitol Square in East Arlington, but no design guidelines are given. Ironically, our zoning requirements have the unintended effect of inhibiting mixed-use development, although this is the historic form of many valued Arlington commercial buildings.</p>
-<div id="pop3"><span style="text-decoration: underline;">Land Use Recommendations</span></div>
-<div id="pane3">1. Recodify and update the Zoning Bylaw (ZBL). The text of the ZBL is not always clear, and some of the language is out of date and inconsistent. As a first step in any zoning revisions following a new master plan, communities should focus on instituting a good regulatory foundation: structure, format, ease of navigation, updated language and definitions, and statutory and case law consistency.<br>
-<br>
-2. Adopt design guidelines for new and redeveloped commercial and industrial sites.<br>
-<br>
-3. Reorganize and consolidate the business zoning districts on Massachusetts Avenue. Zoning along the length of Massachusetts Avenue includes six business zones (B1, B2, B2A, B3, B4, B5) interspersed with six residential zoning districts. Encouraging continuity of development and the cohesion of the streetscape, is difficult. It is difficult to connect the zoning on a given site with the district’s stated purposes in the ZBL. As part of updating and recodifying the ZBL, the Town should consider options for consolidating some of the business districts to better reflect its goals for flexible business zones that allow property owners to adapt their commercial properties to rapidly changing market trends and conditions.<br>
-<br>
-4. Promote development of higher value mixed use buildings by providing redevelopment incentives in all or selected portions of the business districts on Massachusetts Avenue, Broadway, and Medford Street, Arlington needs to unlock the development potential of business-zoned land, especially around the center of town. Slightly increasing the maximum building height in and near existing business districts, and reducing off-street parking requirements would go a long way toward incentivizing redevelopment, as would a clear set of design guidelines. Applicants should be able to anticipate what the Town wants to see in the business districts and plan their projects accordingly.<br>
-<br>
-5. Support vibrant commercial areas by encouraging new mixed use redevelopment that includes residential and commercial uses in and near commercial centers, served by transit and infrastructure. Clarify that mixed-use development is permitted and reconcile inconsistent requirements. The B3 Village Business district and B5 Central Business district are described as encouraging mixed use development, but other business and residential districts along Massachusetts Avenue do not. The ZBL is vague regarding uses that are allowed in mixed-use projects, and dimensional requirements can conflict. As part of the recodification and update process, the Table of Use Regulations should be clarified, and the ZBL should have specific standards for design and construction of mixed use redevelopment projects.<br>
-<br>
-6. Boost industrial and commercial revitalization by allowing multiple uses within structures, parcels, and districts without losing commercial and industrial uses. This will help enhance the suitability of Arlington’s commercial property for businesses in emerging growth sectors and make them more agile in the face of shifting business trends and market conditions.<br>
-7. Establish parking ratios that reflect actual need for parking. Consideration should be given to use, location and access to transit.<br>
-<br>
-8. Amend on-site open space requirements for certain uses in business districts to promote high value redevelopment and alternative green areas such as roof gardens.<br>
-<br>
-9. Reduce the number of uses that require a special permit. Excessive special permit zoning can create land use conflicts and hinder successful planning initiatives. Special permits are a discretionary approval process; the board with authority to grant or deny has considerable power. Developers yearn for predictability. If the Town wants to encourage certain outcomes that are consistent with this Master Plan, some special permits should be replaced with by-right zoning, subject to performance standards and conditions, wherever possible. Performance standards might include design guidelines and other requirements that reflect community goals.<br>
-<br>
-10. Establish areas that are a priority for preservation, and areas that are a priority for redevelopment. The Mugar land, located between Alewife Station and Thorndike Field, is a high priority for preservation. Priority development areas might include the Mill Brook corridor, Broadway, and Massachuchusetts Avenue.</div>
-<script> 
-  $(document).ready(function(){
-    $("#pop").click(function(){
-        $("#pane").slideToggle("slow");
-        });
+</head>
+<body bgcolor="#FCF5DF";>
+<div class="textclasshead">Discrepancies in Land Use and Zoning</div><br>
+<div class="textclass">The chart shown here depicts the number of properties in commercial and industrial zones that have a land use other than what the property is zoned for. Total acreage of these discrepancies is shown by zone. The size of the bubble relates to the number of units currently on the properties. This is shown by zone. Zones can be turned off by clicking the legend at the right. Hover over the bubbles for more information</div> 
+<div id="chartContainer"></div>
+<div class="textclass"; width="100%"; height="400px";>Information reported in the assessor’s database shows that 20 percent of land in Arlington's business districts is used for residential purposes, including single-family homes and apartment units. Arlington allows multifamily housing by special permit in most of the business districts, and some of the apartments and townhouses located on business zoned land came about because of this provision.<br> Similarly, much of Arlington’s industrially zoned land is no longer used for industrial purposes. While the town has zoned about 49 acres for industrial development, a comparison of the zoning map and assessor’s records shows that only fourteen acres (about 29 percent) of the Industrial District is actually used for manufacturing, warehouse/distribution, storage, and other industrial types of activity. The belief that commercial and industrial properties have been rezoned as residential is a common misperception in Arlington.</div>
+<script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", "100%", "100%");
+    d3.csv("https://raw.githubusercontent.com/dfieldsarlington/landusetest/gh-pages/LandUse.csv", function (data) {
+     var myChart = new dimple.chart(svg, data);
+        myChart.setBounds("15%", "5%", "50%", "80%")
+        myChart.addMeasureAxis("x", "Acres");
+        myChart.addMeasureAxis("y", "# of Properties");
+		myChart.addMeasureAxis("z", "# of Units");
+        myChart.addSeries("Zone", dimple.plot.bubble);
+		myChart.assignColor("B1 - Neighborhood Office", "#FFBEBE");
+		myChart.assignColor("B2A - Major Business","#FF0000");
+		myChart.assignColor("I - Industrial","#A900E6");
+		myChart.assignColor("B2 - Neighborhood Business", "#FF7F7F");
+		myChart.assignColor("B3 - Village Business", "#A80000");
+		myChart.assignColor("B4 - Vehicular Oriented Business", "#FF73DF");
+		myChart.assignColor("B5 - Central Business", "#E600A9");
+        var LineLegend = myChart.addLegend ("70%", "10%", "10%", "90%", "right");
+	  LineLegend.fontSize = "auto";
+		var LineStoryboard = myChart.setStoryboard("Zone");
+		LineStoryboard.categoryFields = [null];
+		myChart.draw();
+		LineStoryboard.storyLabel.remove();
+        myChart.legends = [];
+        var filterValues = dimple.getUniqueValues(data, "Zone");
+        LineLegend.shapes.selectAll("rect")
+          .on("click", function (e) {
+            var hide = false;
+            var newFilters = [];
+            filterValues.forEach(function (f) {
+              if (f === e.aggField.slice(-1)[0]) {
+                hide = true;
+              } else {
+                newFilters.push(f);
+              }
+            });
+            if (hide) {
+              d3.select(this).style("opacity", 0.2);
+            } else {
+              newFilters.push(e.aggField.slice(-1)[0]);
+              d3.select(this).style("opacity", 0.8);
+            }
+            filterValues = newFilters;
+            myChart.data = dimple.filterData(data, "Zone", filterValues);
+			d3.selectAll("circle").style("stroke-width", 2);
+            myChart.draw(800);
+			
+          });
+		  
       });
-  $(document).ready(function(){
-    $("#pop2").click(function(){
-        $("#pane2").slideToggle("slow");
-        });
-      });
-	  $(document).ready(function(){
-    $("#pop3").click(function(){
-        $("#pane3").slideToggle("slow");
-        });
-      });
-</script>
-<map id="rade_img_map_1442522001086" name="rade_img_map_1442522001086">
-<area shape="RECT" coords="6,2,106,93" href="https://arlingtonma.gov/departments/planning-community-development/master-plan/elements" target="_blank"></map>
+  </script>
+  </body>
+  </html>
