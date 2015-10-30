@@ -28,7 +28,7 @@ body {
     <script type="text/javascript">
 //Start Line Chart
 var svgLine = dimple.newSvg("#LineChart", "92%", "95%");
-    d3.csv("https://raw.githubusercontent.com/dfieldsarlington/journeytowork/gh-pages/journeytowork.csv", function (data) {
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/transportation/journeytowork.csv", function (data) {
       dimple.filterData(data, "Year", ["1970", "1980", "1990", "2000", "2010", "2013"]);
       var LineChart = new dimple.chart(svgLine, data);
       LineChart.setBounds("15%", "5%", "65%", "75%");
