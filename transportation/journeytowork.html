@@ -19,12 +19,34 @@ body {
 	height: 325px;
 	background-color: rgb(252,245,223);
 }
+.textclasshead {
+  float: center;
+  font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+    font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+  text-align: center;
+  color: #545454;
+  }
+  .textclass {
+  float: left;
+  font-family: sans-serif;
+    font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18px;
+  color: #545454;
+  }
 </style>
 </head>
 <body>
-
+<div class="textclasshead">Means of Transportation to Work</div><br>
+<div class="textclass">The chart shown here depicts general trends in how Arlingtonians commute. The data is from the U.S. Census Bureau and was obtained from NHGIS. Commute modes can be turned off by clicking the legend at the right. Hover over the data points for more information. Data for bicycling from 1970 through 1980 was not collected and is, therefore, unavailable.</div> 
 <div id="LineChart"></div>
-
+<div class="textclass"; width="100%"; height="400px";>Modal split describes the percentage of trips that are made by each of the different transportation modes, e.g., driving alone, driving with others (shared rides, carpooling), public transit, walking, or bicycling. Arlington has an average of 2.24 people per household and 1.46 vehicles per household, according to the 2006-2010 American Community Survey This translates to one vehicle per 1.5 people in every household, which is lower than the regional average and consistent with the high level of commuting by public transit and bicycle. The data also shows a steady rise in the number of residents who work at home, peaking at over 1,300 in 2013.</div>
     <script type="text/javascript">
 //Start Line Chart
 var svgLine = dimple.newSvg("#LineChart", "92%", "95%");
@@ -39,8 +61,7 @@ var svgLine = dimple.newSvg("#LineChart", "92%", "95%");
 	  s.addOrderRule("Mode");
       s.interpolation = "cardinal";
       s.lineMarkers = true;
-	  s.lineWeight = 1.75;
-	  LineChart.assignColor("Arlington", "red", "red");
+	  s.lineWeight = 3; 
       var LineLegend = LineChart.addLegend ("90%", "10%", "10%", "90%", "right");
 	  LineLegend.fontSize = "auto";
 		var LineStoryboard = LineChart.setStoryboard("Mode");
