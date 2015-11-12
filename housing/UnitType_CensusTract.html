@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<title>Unit Type by Census Tract</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+<style>
+body {
+    background-color: rgb(252,245,223);
+}
+p {
+    font: 14px Arial,Helvetica,sans-serif;
+    color: #545454;
+	}
+	
+#RingChart {    
+	float: right;
+	top:10px;
+	width: 100%;
+	height: 350px;
+}
+
+</style>
+</head>
+<body>
+
+<div id="RingChart"></div>
+
+  <script type="text/javascript">
+  //Start  Ring Chart
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    d3.tsv("/data/example_data.tsv", function (data) {
+      var  RingChart = new dimple.chart(svg, data);
+       RingChart.setBounds(65, 50, 505, 310)
+       RingChart.addCategoryAxis("x", ["Price Tier", "Channel"]);
+       RingChart.addMeasureAxis("y", "Unit Sales");
+       RingChart.addMeasureAxis("p", "Unit Sales");
+      var rings =  RingChart.addSeries("Pack Size", dimple.plot.pie);
+      rings.innerRadius = 20;
+      rings.outerRadius = 30;
+       RingChart.addLegend(170, 10, 410, 20, "right");
+       RingChart.draw();
+    });
+  </script>
+</div>
+</html>
