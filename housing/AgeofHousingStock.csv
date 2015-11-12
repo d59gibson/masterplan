@@ -1,64 +1,64 @@
 Decade,Municipality,Percentage
-< 1950,Arlington,63.8
-50 - 59,Arlington,12.4
-60 - 69,Arlington,10
-70 - 79,Arlington,6.4
-80 - 89,Arlington,2.7
-90 - 99,Arlington,1.4
-00 - 11,Arlington,3.3
-< 1950,Belmont,73.1
-50 - 59,Belmont,12.3
-60 - 69,Belmont,4.6
-70 - 79,Belmont,5.1
-80 - 89,Belmont,1.5
-90 - 99,Belmont,0.9
-00 - 11,Belmont,2.6
-< 1950,Cambridge,61.7
-50 - 59,Cambridge,4.4
-60 - 69,Cambridge,6.2
-70 - 79,Cambridge,8.7
-80 - 89,Cambridge,7.3
-90 - 99,Cambridge,4.7
-00 - 11,Cambridge,7
-< 1950,Lexington,30.6
-50 - 59,Lexington,22.5
-60 - 69,Lexington,15.2
-70 - 79,Lexington,8.9
-80 - 89,Lexington,7.4
-90 - 99,Lexington,6
-00 - 11,Lexington,9.5
-< 1950,Medford,66.1
-50 - 59,Medford,7.9
-60 - 69,Medford,5.3
-70 - 79,Medford,6.4
-80 - 89,Medford,7.8
-90 - 99,Medford,1.6
-00 - 11,Medford,4.8
-< 1950,Somerville,75
-50 - 59,Somerville,5.1
-60 - 69,Somerville,4.4
-70 - 79,Somerville,6.3
-80 - 89,Somerville,4.3
-90 - 99,Somerville,1.8
-00 - 11,Somerville,3.1
-< 1950,Winchester,49
-50 - 59,Winchester,14.6
-60 - 69,Winchester,12.5
-70 - 79,Winchester,5.8
-80 - 89,Winchester,7.9
-90 - 99,Winchester,6.4
-00 - 11,Winchester,3.8
-< 1950,Middlesex County,43.4
-50 - 59,Middlesex County,12.4
-60 - 69,Middlesex County,11.1
-70 - 79,Middlesex County,10.4
-80 - 89,Middlesex County,9.6
-90 - 99,Middlesex County,6.5
-00 - 11,Middlesex County,6.5
-< 1950,Massachusetts,41.5
-50 - 59,Massachusetts,11.5
-60 - 69,Massachusetts,10.4
-70 - 79,Massachusetts,11.7
-80 - 89,Massachusetts,10.8
-90 - 99,Massachusetts,7.3
-00 - 11,Massachusetts,6.7
+Pre 1950,Arlington,63.8
+1950 - 1959,Arlington,12.4
+1960 - 1969,Arlington,10
+1970 - 1979,Arlington,6.4
+1980 - 1989,Arlington,2.7
+1990 - 1999,Arlington,1.4
+2000 - 2011 ,Arlington,3.3
+Pre 1950,Belmont,73.1
+1950 - 1959,Belmont,12.3
+1960 - 1969,Belmont,4.6
+1970 - 1979,Belmont,5.1
+1980 - 1989,Belmont,1.5
+1990 - 1999,Belmont,0.9
+2000 - 2011 ,Belmont,2.6
+Pre 1950,Cambridge,61.7
+1950 - 1959,Cambridge,4.4
+1960 - 1969,Cambridge,6.2
+1970 - 1979,Cambridge,8.7
+1980 - 1989,Cambridge,7.3
+1990 - 1999,Cambridge,4.7
+2000 - 2011 ,Cambridge,7
+Pre 1950,Lexington,30.6
+1950 - 1959,Lexington,22.5
+1960 - 1969,Lexington,15.2
+1970 - 1979,Lexington,8.9
+1980 - 1989,Lexington,7.4
+1990 - 1999,Lexington,6
+2000 - 2011 ,Lexington,9.5
+Pre 1950,Medford,66.1
+1950 - 1959,Medford,7.9
+1960 - 1969,Medford,5.3
+1970 - 1979,Medford,6.4
+1980 - 1989,Medford,7.8
+1990 - 1999,Medford,1.6
+2000 - 2011 ,Medford,4.8
+Pre 1950,Somerville,75
+1950 - 1959,Somerville,5.1
+1960 - 1969,Somerville,4.4
+1970 - 1979,Somerville,6.3
+1980 - 1989,Somerville,4.3
+1990 - 1999,Somerville,1.8
+2000 - 2011 ,Somerville,3.1
+Pre 1950,Winchester,49
+1950 - 1959,Winchester,14.6
+1960 - 1969,Winchester,12.5
+1970 - 1979,Winchester,5.8
+1980 - 1989,Winchester,7.9
+1990 - 1999,Winchester,6.4
+2000 - 2011 ,Winchester,3.8
+Pre 1950,Middlesex County,43.4
+1950 - 1959,Middlesex County,12.4
+1960 - 1969,Middlesex County,11.1
+1970 - 1979,Middlesex County,10.4
+1980 - 1989,Middlesex County,9.6
+1990 - 1999,Middlesex County,6.5
+2000 - 2011 ,Middlesex County,6.5
+Pre 1950,Massachusetts,41.5
+1950 - 1959,Massachusetts,11.5
+1960 - 1969,Massachusetts,10.4
+1970 - 1979,Massachusetts,11.7
+1980 - 1989,Massachusetts,10.8
+1990 - 1999,Massachusetts,7.3
+2000 - 2011 ,Massachusetts,6.7
