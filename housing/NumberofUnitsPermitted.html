@@ -51,23 +51,23 @@ body {
 //Start Bar Chart
 var svgBar = dimple.newSvg("#BarChart", "92%", "95%");
     d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/NumberofUnitsPermitted.csv", function (data) {
-      dimple.filterData(data, "Municipality", ["Arlington", "Belmont", "Cambridge", "Lexington", "Medford", "Winchester"]);
+      dimple.filterData(data, "Year", ["Arlington", "Belmont", "Lexington", "Medford", "Winchester"]);
 var BarChart = new dimple.chart(svgBar, data);
       BarChart.setBounds("15%", "5%", "65%", "75%");
-      var x = BarChart.addCategoryAxis("x", "Municipality");
+      var x = BarChart.addCategoryAxis("x", "Year");
       var y = BarChart.addMeasureAxis("y", "Units Created");
-	  y.overrideMax = 100;
-      var s = BarChart.addSeries("Year", dimple.plot.bar);
-	  s.addOrderRule("Year");
+	  y.overrideMax = 300;
+      var s = BarChart.addSeries("Municipality", dimple.plot.bar);
+	  s.addOrderRule("Municipality");
       s.interpolation = "cardinal";
       var BarLegend = BarChart.addLegend ("90%", "10%", "10%", "90%", "right");
 	  BarLegend.fontSize = "auto";
-		var BarStoryboard = BarChart.setStoryboard("Year");
+		var BarStoryboard = BarChart.setStoryboard("Municipality");
 		BarStoryboard.categoryFields = [null];
 		BarChart.draw();
 		BarStoryboard.storyLabel.remove();
         BarChart.legends = [];
-        var filterValues = dimple.getUniqueValues(data, "Year");
+        var filterValues = dimple.getUniqueValues(data, "Municipality");
         BarLegend.shapes.selectAll("rect")
           .on("click", function (e) {
             var hide = false;
@@ -86,7 +86,7 @@ var BarChart = new dimple.chart(svgBar, data);
               d3.select(this).style("opacity", 0.8);
             }
             filterValues = newFilters;
-            BarChart.data = dimple.filterData(data, "Year", filterValues);
+            BarChart.data = dimple.filterData(data, "Municipality", filterValues);
             BarChart.draw(800);
           });
 		  
