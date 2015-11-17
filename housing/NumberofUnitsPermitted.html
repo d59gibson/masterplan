@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>Age of Housing Stock</title>
+<title>Residential Units Permitted</title>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
 
@@ -43,7 +43,7 @@ body {
 </style>
 </head>
 <body>
-<div class="textclasshead">Age of Housing Stock</div><br>
+<div class="textclasshead">Number of Residential Units Permitted</div><br>
 <div class="textclass">The chart shown here depicts general trends in the age of housing stock in Arlington and surrounding communities. Age cohorts can be turned off by clicking the legend at the right. Hover over bars for more information on cohorts in specific municipalities </div> 
 <div id="BarChart"></div>
 <div class="textclass"; width="100%"; height="100px";>Arlington’s housing is relatively old. Local data show that the average age of housing units in Arlington is 81 years and the median year of construction is 1931. Similar conditions exist in other towns and small cities around Boston and Cambridge, while housing in outer parts of Middlesex County is newer</div>
@@ -51,23 +51,23 @@ body {
 //Start Bar Chart
 var svgBar = dimple.newSvg("#BarChart", "92%", "95%");
     d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/AgeofHousingStock.csv", function (data) {
-      dimple.filterData(data, "Municipality", ["Arlington", "Belmont", "Cambridge", "Lexington", "Medford", "Somerville", "Winchester", "Middlesex County", "Massachusetts"]);
+      dimple.filterData(data, "Municipality", ["Arlington", "Belmont", "Cambridge", "Lexington", "Medford", "Winchester"]);
 var BarChart = new dimple.chart(svgBar, data);
       BarChart.setBounds("15%", "5%", "65%", "75%");
       var x = BarChart.addCategoryAxis("x", "Municipality");
-      var y = BarChart.addMeasureAxis("y", "Percentage");
+      var y = BarChart.addMeasureAxis("y", "Units Created");
 	  y.overrideMax = 100;
-      var s = BarChart.addSeries("Decade", dimple.plot.bar);
-	  s.addOrderRule("Decade");
+      var s = BarChart.addSeries("Year", dimple.plot.bar);
+	  s.addOrderRule("Year");
       s.interpolation = "cardinal";
       var BarLegend = BarChart.addLegend ("90%", "10%", "10%", "90%", "right");
 	  BarLegend.fontSize = "auto";
-		var BarStoryboard = BarChart.setStoryboard("Decade");
+		var BarStoryboard = BarChart.setStoryboard("Year");
 		BarStoryboard.categoryFields = [null];
 		BarChart.draw();
 		BarStoryboard.storyLabel.remove();
         BarChart.legends = [];
-        var filterValues = dimple.getUniqueValues(data, "Decade");
+        var filterValues = dimple.getUniqueValues(data, "Year");
         BarLegend.shapes.selectAll("rect")
           .on("click", function (e) {
             var hide = false;
@@ -86,7 +86,7 @@ var BarChart = new dimple.chart(svgBar, data);
               d3.select(this).style("opacity", 0.8);
             }
             filterValues = newFilters;
-            BarChart.data = dimple.filterData(data, "Decade", filterValues);
+            BarChart.data = dimple.filterData(data, "Year", filterValues);
             BarChart.draw(800);
           });
 		  
