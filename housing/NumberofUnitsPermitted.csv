@@ -1,6 +1,4 @@
 Year,Municipality,Units Created
-2002,Arlington,44
-2003,Arlington,70
 2004,Arlington,68
 2005,Arlington,71
 2006,Arlington,69
@@ -10,8 +8,8 @@ Year,Municipality,Units Created
 2010,Arlington,53
 2011,Arlington,60
 2012,Arlington,89
-2002,Belmont,4
-2003,Belmont,11
+2013,Arlington,100
+2014,Arlington,119
 2004,Belmont,15
 2005,Belmont,48
 2006,Belmont,42
@@ -21,8 +19,8 @@ Year,Municipality,Units Created
 2010,Belmont,15
 2011,Belmont,43
 2012,Belmont,27
-2002,Lexington,72
-2003,Lexington,61
+2013,Belmont,22
+2014,Belmont,13
 2004,Lexington,65
 2005,Lexington,65
 2006,Lexington,55
@@ -32,8 +30,8 @@ Year,Municipality,Units Created
 2010,Lexington,83
 2011,Lexington,61
 2012,Lexington,97
-2002,Medford,11
-2003,Medford,24
+2013,Lexington,82
+2014,Lexington,99
 2004,Medford,14
 2005,Medford,16
 2006,Medford,16
@@ -43,8 +41,8 @@ Year,Municipality,Units Created
 2010,Medford,2
 2011,Medford,2
 2012,Medford,3
-2002,Winchester,99
-2003,Winchester,91
+2013,Medford,7
+2014,Medford,8
 2004,Winchester,98
 2005,Winchester,23
 2006,Winchester,32
@@ -54,3 +52,5 @@ Year,Municipality,Units Created
 2010,Winchester,18
 2011,Winchester,50
 2012,Winchester,49
+2013,Winchester,31
+2014,Winchester,35
