@@ -12,7 +12,7 @@
 	float: left;
 	top:10px;
 	left:10px;
-	width:50%;
+	width:55%;
 	height: 500px;
 	background-color: rgb(252,245,223);
 }
@@ -23,13 +23,13 @@
   <script type="text/javascript">
 //Start HAffChart 
       var svgHAff = dimple.newSvg("#HAffChart", "80%", "90%");
-    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/housing/HousingAffordability.csv", function (data) {
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/HousingAffordability.csv", function (data) {
       var HAffChart = new dimple.chart(svgHAff, data);
       var x = HAffChart.addCategoryAxis("x", ["Year", "Type"]);
       var y1 = HAffChart.addMeasureAxis("y", "Affordability Ratio");
       var y2 = HAffChart.addMeasureAxis("y", "Price/Income");
       var bars = HAffChart.addSeries("Type", dimple.plot.bar, [x,y2]);
-      var s = HAffChart.addSeries(null, dimple.plot.line, [x, y1]);
+      var s = HAffChart.addSeries("Affordability Ratio", dimple.plot.line, [x, y1]);
       s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 4;
