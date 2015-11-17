@@ -1,13 +1,5 @@
-Year,Type,Price/Income,,
-1990,Median Household Income,79700,,
-1990,Median Single Family Sales Price,344599,,
-1990,Affordability Ratio,23.13,,
-2000,Median Household Income,89169,,
-2000,Median Single Family Sales Price,476222,,
-2000,Affordability Ratio,18.72,,
-2010,Median Household Income,90705,,
-2010,Median Single Family Sales Price,538680,,
-2010,Affordability Ratio,16.84,,
-2015,Median Household Income,91723,,
-2015,Median Single Family Sales Price,633000,,
-2015,Affordability Ratio,14.49,,
+Year,Median Household Income,Median Single Family Sales Price,Affordability Ratio
+1990,79700,344599,23.13
+2000,89169,476222,18.72
+2010,90705,538680,16.84
+2015,91723,633000,14.49
