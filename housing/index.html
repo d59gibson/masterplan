@@ -29,7 +29,7 @@
       var y1 = HAffChart.addMeasureAxis("y", "Affordability Ratio");
       var y2 = HAffChart.addMeasureAxis("y", "Price/Income");
       var bars = HAffChart.addSeries("Type", dimple.plot.bar, [x,y2]);
-      var s = HAffChart.addSeries("Affordability Ratio", dimple.plot.line, [x, y1]);
+      var s = HAffChart.addSeries(null, dimple.plot.line, [x, y1]);
       s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 4;
