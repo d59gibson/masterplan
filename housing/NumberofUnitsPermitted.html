@@ -50,7 +50,7 @@ body {
     <script type="text/javascript">
 //Start Bar Chart
 var svgBar = dimple.newSvg("#BarChart", "92%", "95%");
-    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/AgeofHousingStock.csv", function (data) {
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/NumberofUnitsPermitted.csv", function (data) {
       dimple.filterData(data, "Municipality", ["Arlington", "Belmont", "Cambridge", "Lexington", "Medford", "Winchester"]);
 var BarChart = new dimple.chart(svgBar, data);
       BarChart.setBounds("15%", "5%", "65%", "75%");
