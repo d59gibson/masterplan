@@ -49,12 +49,12 @@ body {
     <script type="text/javascript">
 //Start Line Chart
 var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
-    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/totpop.csv", function (data) {
-      dimple.filterData(data, "Year", "1960");
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/MedianSalesPrice2015.csv", function (data) {
+      dimple.filterData(data, "Year");
       var LineChart = new dimple.chart(svgLine, data);
       var x = LineChart.addCategoryAxis("x", "Year");
       x.addOrderRule("Year");
-      LineChart.addMeasureAxis("y", "Population");
+      LineChart.addMeasureAxis("y", "Adjusted Sales Price");
       var s = LineChart.addSeries(null, dimple.plot.line);
 	  s.interpolation = "cardinal";
       s.lineMarkers = true;
