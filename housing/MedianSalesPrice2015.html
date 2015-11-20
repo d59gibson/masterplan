@@ -3,14 +3,14 @@
 
 <html>
 <head>
-<title>Adjusted Sales Price</title>
+<title>Arlington Demographics</title>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
 <style>
 body {
     background-color: rgb(252,245,223);
 }
-#LineChart {    
+#AreaChart {    
     float: left;
     top:5px;
 	right:8px;
@@ -42,29 +42,22 @@ body {
 </style>
 </head>
 <body>
-<div class="textclasshead">Median Single Family Home Sales</div><br>
-<div class="textclass">The chart shown here shows the median sales price for simgle family homes in Arlington. The data has been adjusted for inflation using tables from the <a href="http://www.bls.gov/cpi/" target="_blank">Bureau of Labor Statistics</a>. Hover over points for more information about specific years. All data is from The Warren Group. </div> 
-<div id="LineChart"></div>
-<div class="textclass"; width="100%"; height="100px";>There is a considerable amount of new housing development in communities around Arlington. Approximately 1,300 units have been permitted near the Alewife MBTA Station in North Cambridge, and several projects have been proposed adjacent to that location in the Town of Belmont as well.</div>
- <script type="text/javascript">
+<div id="AreaChart"></div>
+  <script type="text/javascript">
 //Start Line Chart
-var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
+var svgArea = dimple.newSvg("#AreaChart", "92%", "95%");
     d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/MedianSalesPrice2015.csv", function (data) {
-      dimple.filterData(data, "Year");
-      var LineChart = new dimple.chart(svgLine, data);
-      var x = LineChart.addCategoryAxis("x", "Year");
+      dimple.filterData(data, "Year", "1990");
+      var AreaChart = new dimple.chart(svgArea, data);
+      AreaChart.setBounds("15%", "5%", "65%", "82%");
+      var x = AreaChart.addCategoryAxis("x", "Year");
       x.addOrderRule("Year");
-      LineChart.addMeasureAxis("y", "Adjusted Sales Price");
-      var s = LineChart.addSeries(null, dimple.plot.line);
-	  s.interpolation = "cardinal";
-      s.lineMarkers = true;
-	  s.lineWeight = 2;
-	  LineChart.draw();
-		var LineStoryboard = LineChart.setStoryboard("Year");
-		LineStoryboard.categoryFields = [null];
-		LineChart.draw(800);
-		LineStoryboard.storyLabel.remove();
+      AreaChart.addMeasureAxis("y", "Adjusted Sales Price");
+      var s = AreaChart.addSeries(null, dimple.plot.area);
+      s.interpolation = "step";
+      s.lineWeight = 1;
+      AreaChart.draw();
     });
-</script>
-</body>
+  </script>
+</div>
 </html>
