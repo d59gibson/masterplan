@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+<head>
+<title>Adjusted Sales Price</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+<style>
+body {
+    background-color: rgb(252,245,223);
+}
+#LineChart {    
+    float: left;
+    top:5px;
+	right:8px;
+	width: 100%;
+	height: 400px;
+	background-color: rgb(252,245,223);
+}
+.textclasshead {
+  float: center;
+  font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+    font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+  text-align: center;
+  color: #545454;
+  }
+  .textclass {
+  float: left;
+  font-family: sans-serif;
+    font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18px;
+  color: #545454;
+  }
+</style>
+</head>
+<body>
+<div class="textclasshead">Number of Residential Units Permitted</div><br>
+<div class="textclass">The chart shown here shows the number of housing units permitted in Arlington and surrounding communities. Municipalities can be turned off by clicking the legend at the right. Hover over bars for more information about specific municipalities. All data derived from Censtats 2013. </div> 
+<div id="LineChart"></div>
+<div class="textclass"; width="100%"; height="100px";>There is a considerable amount of new housing development in communities around Arlington. Approximately 1,300 units have been permitted near the Alewife MBTA Station in North Cambridge, and several projects have been proposed adjacent to that location in the Town of Belmont as well.</div>
+    <script type="text/javascript">
+//Start Line Chart
+var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/totpop.csv", function (data) {
+      dimple.filterData(data, "Year", "1960");
+      var LineChart = new dimple.chart(svgLine, data);
+      var x = LineChart.addCategoryAxis("x", "Year");
+      x.addOrderRule("Year");
+      LineChart.addMeasureAxis("y", "Population");
+      var s = LineChart.addSeries(null, dimple.plot.line);
+	  s.interpolation = "cardinal";
+      s.lineMarkers = true;
+	  s.lineWeight = 2;
+	  LineChart.draw();
+		var LineStoryboard = LineChart.setStoryboard("Year");
+		LineStoryboard.categoryFields = [null];
+		LineChart.draw(800);
+		LineStoryboard.storyLabel.remove();
+    });
+
+
+</script>
+</body>
+</html>
