@@ -39,6 +39,7 @@ body {
 		PieLegend.fontSize = "auto";
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
+		PieStoryboard.fontSize = "18px";
 		PieChart.draw();
 	    PieChart.legends = [];
         var filterValues = dimple.getUniqueValues(data, "Race");
