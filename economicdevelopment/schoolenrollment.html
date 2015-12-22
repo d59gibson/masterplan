@@ -40,7 +40,7 @@ var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
       var x = LineChart.addCategoryAxis("x", "Year");
       x.addOrderRule("Year");
       LineChart.addMeasureAxis("y", "School Enrollment");
-      var s = LineChart.addSeries(null, dimple.plot.line);
+      var s = LineChart.addSeries(null, dimple.plot.bar);
 	  s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 3;
