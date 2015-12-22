@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>Arlington Demographics</title>
+<title>Arlington School Enrollment</title>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
@@ -33,17 +33,17 @@ p {
   <script type="text/javascript">
 //Start Line Chart
 var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
-    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/totpop.csv", function (data) {
+    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/economicdevelopment/schoolenrollment.csv", function (data) {
       dimple.filterData(data, "Year", "1960");
       var LineChart = new dimple.chart(svgLine, data);
 	  LineChart.setBounds("5%", "10%", "70%", "65%");
       var x = LineChart.addCategoryAxis("x", "Year");
       x.addOrderRule("Year");
-      LineChart.addMeasureAxis("y", "Population");
+      LineChart.addMeasureAxis("y", "School Enrollment");
       var s = LineChart.addSeries(null, dimple.plot.line);
 	  s.interpolation = "cardinal";
       s.lineMarkers = true;
-	  s.lineWeight = 2;
+	  s.lineWeight = 3;
 	  
 	  LineChart.draw();
 	  
