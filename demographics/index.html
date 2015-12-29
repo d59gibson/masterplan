@@ -20,14 +20,14 @@ p {
 	float: right;
 	top:;
 	left:2px;
-	width: 55%;
+	width: 53%;
 	height: 340px
 }	
 
 #BarChart {    
 	float: left;
 	top:14px;
-	width: 45%;
+	width: 47%;
 	height: 350px;
 }
 
@@ -37,24 +37,30 @@ p {
 <div id="BarChart"></div>
 <div id="LineChart"></div>
 
-    <script type="text/javascript">
+      <script type="text/javascript">
   //Start Bar Chart
         var svg = dimple.newSvg("#BarChart", "100%", "100%");
     d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/pyramid.csv", function (data) {
       dimple.filterData(data, "Year", ["1960", "1970", "1980", "1990", "2000", "2010", "2020", "2030", "2035"]);
           var indicator = new dimple.chart(svg, data);
-          var defaultColor = indicator.defaultColors[0];
-          var indicatorColor = indicator.defaultColors[2];
+          var defaultColor = indicator.defaultColors[8];
+          var indicatorColor = indicator.defaultColors[0];
           var frame = 2500;
           var firstTick = true;
           indicator.setBounds("75%", "30%", "12%", "40%");
           var y = indicator.addCategoryAxis("y", "Year");
           y.addOrderRule("Date", "Desc");
-          var x = indicator.addMeasureAxis("x", "Age");
+          var x = indicator.addMeasureAxis("x", "Year");
           x.hidden = true;
           var s = indicator.addSeries(null, dimple.plot.bar);
           s.addEventHandler("click", onClick);
+    	  s.getTooltipText = function (e) {
+			return (null);
+			};
           indicator.draw();
+		  window.onresize = function resize () {
+			indicator.draw(0, true);
+			};
           y.titleShape.remove();
           y.shapes.selectAll("line,path").remove();
           y.shapes.selectAll("text")
@@ -64,7 +70,7 @@ p {
           svg.selectAll("title_text")
                   .data(["Click bar to select",
                       "and pause. Click again",
-                      "to resume"])
+                      "to resume animation"])
                   .enter()
                   .append("text")
                   .attr("x", "71%")
@@ -84,12 +90,15 @@ p {
 	  BarChart.setBounds("10%", "11%", "65%", "70%");
 	  var BarChartAxis = BarChart.addMeasureAxis("x", "People");
 	  BarChartAxis.overrideMin = -4500;
+	 BarChartAxis.tickFormat = ',.0f';
+	      BarChartAxis.fontSize = "8px";
 	  BarChartAxis.overrideMax = 4500;
+	  BarChartAxis.tickFormat = ',.0f';
+	      BarChartAxis.fontSize = "8px";
       var y = BarChart.addCategoryAxis("y", "Age");
       y.addOrderRule("Age");
       BarChart.addSeries("Sex", dimple.plot.bar);
       BarChart.addLegend("30%", "4%", "80%", "6%", "left"); 
-      BarChart.fontSize = "auto";
           var story = BarChart.setStoryboard("Year", onTick);
           story.frameDuration = frame;
           story.addOrderRule("Date");
@@ -117,6 +126,9 @@ p {
               firstTick = false;
           }
       });
+      window.onresize = function resize () {
+    BarChart.draw(0, true);
+   };
   </script>
   
   <script type="text/javascript">
@@ -127,7 +139,9 @@ var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
       var LineChart = new dimple.chart(svgLine, data);
       var x = LineChart.addCategoryAxis("x", "Year");
       x.addOrderRule("Year");
-      LineChart.addMeasureAxis("y", "Population");
+      var y = LineChart.addMeasureAxis("y", "Population");
+	  y.tickFormat = ',.0f';
+	      y.fontSize = "8px";
       var s = LineChart.addSeries(null, dimple.plot.line);
 	  s.interpolation = "cardinal";
       s.lineMarkers = true;
@@ -138,6 +152,9 @@ var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
 		LineChart.draw(800);
 		LineStoryboard.storyLabel.remove();
     });
+    window.onresize = function resize () {
+    LineChart.draw(0, true);
+   };
 </script>
 </body>
 </html>

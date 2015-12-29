@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>Arlington Demographics</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
 
@@ -40,24 +39,26 @@ body {
 	  HHLineChart.setBounds("10%", "10%", "72%", "75%");
       var x = HHLineChart.addCategoryAxis("x", "Year");
       var y1 = HHLineChart.addMeasureAxis("y", "Average Household Size");
+	 
       var y2 = HHLineChart.addMeasureAxis("y", "Number of Households");
+	  y1.fontSize = "11px";
+	  y2.fontSize = "11px";
+	  x.fontSize = "13px";
       var bars = HHLineChart.addSeries(null, dimple.plot.bar, [x,y2]);
+	  bars.barGap = 0.25;
       var s = HHLineChart.addSeries(null, dimple.plot.line, [x, y1]);
       s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 4;
-	  s.assignColor = "red"
-      bars.barGap = 0.25;
-      
       x.addOrderRule("Date");
       HHLineChart.draw();
-	  y1.tickFormat = ",d";
-      //y1.tickFormat = ",d";
-	  var HHLineStoryboard = HHLineChart.setStoryboard("Year");
-		HHLineStoryboard.categoryFields = [null];
-		HHLineChart.draw(800);
-		HHLineStoryboard.storyLabel.remove();
-      
+	  y1.tickFormat = ",.2f";
+	  
+      y2.tickFormat = ",.0f";
+	  
+   window.onresize = function resize () {
+    HHLineChart.draw(0, true);
+   };   
         
 </script>
 </body>

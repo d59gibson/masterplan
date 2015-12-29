@@ -65,6 +65,9 @@ body {
             PieChart.draw(800);
           });
       });
+	     window.onresize = function resize () {
+    PieChart.draw(0, true);
+   };
   </script>
  </body>
 </html>

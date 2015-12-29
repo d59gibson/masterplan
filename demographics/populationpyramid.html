@@ -35,18 +35,24 @@ p {
     d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/pyramid.csv", function (data) {
       dimple.filterData(data, "Year", ["1960", "1970", "1980", "1990", "2000", "2010", "2020", "2030", "2035"]);
           var indicator = new dimple.chart(svg, data);
-          var defaultColor = indicator.defaultColors[0];
-          var indicatorColor = indicator.defaultColors[2];
+          var defaultColor = indicator.defaultColors[8];
+          var indicatorColor = indicator.defaultColors[0];
           var frame = 2500;
           var firstTick = true;
           indicator.setBounds("75%", "30%", "12%", "40%");
           var y = indicator.addCategoryAxis("y", "Year");
           y.addOrderRule("Date", "Desc");
-          var x = indicator.addMeasureAxis("x", "Age");
+          var x = indicator.addMeasureAxis("x", "Year");
           x.hidden = true;
           var s = indicator.addSeries(null, dimple.plot.bar);
           s.addEventHandler("click", onClick);
+		  s.getTooltipText = function (e) {
+			return (null);
+			};
           indicator.draw();
+		  window.onresize = function resize () {
+			indicator.draw(0, true);
+			};
           y.titleShape.remove();
           y.shapes.selectAll("line,path").remove();
           y.shapes.selectAll("text")
@@ -76,7 +82,11 @@ p {
 	  BarChart.setBounds("10%", "11%", "65%", "70%");
 	  var BarChartAxis = BarChart.addMeasureAxis("x", "People");
 	  BarChartAxis.overrideMin = -4500;
+	 BarChartAxis.tickFormat = ',.0f';
+	      BarChartAxis.fontSize = "8px";
 	  BarChartAxis.overrideMax = 4500;
+	  BarChartAxis.tickFormat = ',.0f';
+	      BarChartAxis.fontSize = "8px";
       var y = BarChart.addCategoryAxis("y", "Age");
       y.addOrderRule("Age");
       BarChart.addSeries("Sex", dimple.plot.bar);
@@ -108,6 +118,9 @@ p {
               firstTick = false;
           }
       });
+      window.onresize = function resize () {
+    BarChart.draw(0, true);
+   };
   </script>
 </body>
 </html>

@@ -16,7 +16,7 @@ body {
 	top:5px;
 	right:8px;
 	width: 100%;
-	height: 440px;
+	height: 300px;
 	background-color: rgb(252,245,223);
 }
 </style>
@@ -31,47 +31,28 @@ var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
     d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/educationalattainment.csv", function (data) {
       dimple.filterData(data, "Year", ["1970", "1980", "1990", "2000", "2010", "2015"]);
       var LineChart = new dimple.chart(svgLine, data);
-      LineChart.setBounds("10%", "10%", "75%", "80%");
+      LineChart.setBounds("12%", "5%", "88%", "80%");
       var x = LineChart.addCategoryAxis("x", "Year");
       x.addOrderRule("Year");
-      var y = LineChart.addMeasureAxis("y", "Educational Attainment");
-	  y.tickFormat = "%";
+      var y = LineChart.addMeasureAxis("y", "Educational Attainment %");
       var s = LineChart.addSeries("Degree", dimple.plot.line);
 	  s.addOrderRule("Degree");
       s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 3;
-      var LineLegend = LineChart.addLegend ("90%", "20%", "10%", "90%", "right");
+      var LineLegend = LineChart.addLegend ("60%", "8%", "10%", "90%", "right");
 	  LineLegend.fontSize = "auto";
 		var LineStoryboard = LineChart.setStoryboard("Degree");
 		LineStoryboard.categoryFields = [null];
 		LineChart.draw();
-		LineStoryboard.storyLabel.remove();
-        LineChart.legends = [];
-        var filterValues = dimple.getUniqueValues(data, "Degree");
-        LineLegend.shapes.selectAll("rect")
-          .on("click", function (e) {
-            var hide = false;
-            var newFilters = [];
-            filterValues.forEach(function (f) {
-              if (f === e.aggField.slice(-1)[0]) {
-                hide = true;
-              } else {
-                newFilters.push(f);
-              }
-            });
-            if (hide) {
-              d3.select(this).style("opacity", 0.2);
-            } else {
-              newFilters.push(e.aggField.slice(-1)[0]);
-              d3.select(this).style("opacity", 0.8);
-            }
-            filterValues = newFilters;
-            LineChart.data = dimple.filterData(data, "Degree", filterValues);
-            LineChart.draw(800);
-          });
-		  
+        LineStoryboard.storyLabel.remove();
       });
+      window.onresize = function resize () {
+    LineChart.draw(0, true);
+   };
+    window.onresize = function resize () {
+    LineChart.draw(0, true);
+   };
   </script>
   </body>
   </html>
