@@ -30,11 +30,11 @@ body {
 </style>
 </head>
 <body>
-<div class="textclasshead">Employment by Sector for Arlington, MA 2005 - 2013</div><br>
+<div class="textclasshead">Employment by Sector for Arlington, MA 2005 - 2014</div><br>
 <div id="chartContainer"></div>
 <script type="text/javascript">
       var svg = dimple.newSvg("#chartContainer", "100%", "100%");
-      d3.csv("https://raw.githubusercontent.com/dfieldsarlington/economicdevelopment/gh-pages/employment_sector_05_13.csv", function (data) {
+      d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/economicdevelopment/employment_sector_05_13.csv", function (data) {
           // Filter for 1 year
           data = dimple.filterData(data, "Year", [
               "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"
@@ -45,7 +45,7 @@ body {
           var defaultColor = indicator.defaultColors[8];
           var indicatorColor = indicator.defaultColors[0];
           
-          var frame = 2500;
+          var frame = 3500;
           var firstTick = true;
           
           indicator.setBounds("88%", "30%", "7%", "40%");
@@ -90,8 +90,8 @@ body {
           s.shapes
                   .attr("rx", 10)
                   .attr("ry", 10)
-                  .style("fill", function (d) { return (d.y === '2013' ? indicatorColor.fill : defaultColor.fill) })
-                  .style("stroke", function (d) { return (d.y === '2013' ? indicatorColor.stroke : defaultColor.stroke) })
+                  .style("fill", function (d) { return (d.y === '2014' ? indicatorColor.fill : defaultColor.fill) })
+                  .style("stroke", function (d) { return (d.y === '2014' ? indicatorColor.stroke : defaultColor.stroke) })
                   .style("opacity", 0.4);
           
           var bubbles = new dimple.chart(svg, data);
