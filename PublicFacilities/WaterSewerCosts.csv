@@ -1,9 +1,4 @@
-Municipality,"Average
-Sewer Cost","Population
-Served","Average
-Water Cost",Average Annual Utility Cost (Combined),Median Household Income,"Utility Cost
-% Household
-Income"
+Municipality,Average Sewer Cost,Population Served,Average Water Cost,Average Annual Utility Cost (Combined),Median Household Income,Utility Cost % Household Income
 Arlington,583,42300,594,1177,87525,0.013
 Belmont,1347,24000,724,2071,105717,0.020
 Brookline,895,56377,600,1495,95471,0.016
