@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>Arlington Population Pyramid</title>
+<title>Arlington Demographics</title>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
 
@@ -14,22 +14,23 @@ body {
 p {
     font: 14px Arial,Helvetica,sans-serif;
     color: #545454;
-	}
-	
+    }
+    
+
 #BarChart {    
-	float: right;
-	top:10px;
-	width: 100%;
+	float: left;
+	top:14px;
+	width: 60%;
 	height: 350px;
 }
 
 </style>
 </head>
 <body>
-
 <div id="BarChart"></div>
+<div id="LineChart"></div>
 
-  <script type="text/javascript">
+      <script type="text/javascript">
   //Start Bar Chart
         var svg = dimple.newSvg("#BarChart", "100%", "100%");
     d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/master/demographics/pyramid.csv", function (data) {
@@ -46,13 +47,13 @@ p {
           x.hidden = true;
           var s = indicator.addSeries(null, dimple.plot.bar);
           s.addEventHandler("click", onClick);
-		  s.getTooltipText = function (e) {
+    	  s.getTooltipText = function (e) {
 			return (null);
 			};
-          indicator.draw();
+          indicator.draw(0);
 		  window.onresize = function resize () {
 			indicator.draw(0, true);
-			};
+			};	
           y.titleShape.remove();
           y.shapes.selectAll("line,path").remove();
           y.shapes.selectAll("text")
@@ -77,16 +78,16 @@ p {
                   .style("fill", function (d) { return (d.y === '1960' ? indicatorColor.fill : defaultColor.fill) })
                   .style("stroke", function (d) { return (d.y === '1960' ? indicatorColor.stroke : defaultColor.stroke) })
                   .style("opacity", 0.4);
-				  
+			  
 	  var BarChart = new dimple.chart(svg, data);			  
 	  BarChart.setBounds("10%", "11%", "65%", "70%");
 	  var BarChartAxis = BarChart.addMeasureAxis("x", "People");
 	  BarChartAxis.overrideMin = -4500;
 	 BarChartAxis.tickFormat = ',.0f';
-	      BarChartAxis.fontSize = "8px";
+	      BarChartAxis.fontSize = "auto";
 	  BarChartAxis.overrideMax = 4500;
 	  BarChartAxis.tickFormat = ',.0f';
-	      BarChartAxis.fontSize = "8px";
+	      BarChartAxis.fontSize = "auto";
       var y = BarChart.addCategoryAxis("y", "Age");
       y.addOrderRule("Age");
       BarChart.addSeries("Sex", dimple.plot.bar);
@@ -94,7 +95,11 @@ p {
           var story = BarChart.setStoryboard("Year", onTick);
           story.frameDuration = frame;
           story.addOrderRule("Date");
-          BarChart.draw();
+          BarChart.draw(800);
+		  window.onresize = function resize () {
+    BarChart.draw(0, true);
+   };
+   
           BarChart.legends = [];
           story.storyLabel.remove();
           function onClick(e) {
@@ -118,9 +123,7 @@ p {
               firstTick = false;
           }
       });
-      window.onresize = function resize () {
-    BarChart.draw(0, true);
-   };
-  </script>
+      
+</script>
 </body>
 </html>
