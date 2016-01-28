@@ -44,13 +44,13 @@ body {
 </head>
 <body>
 <div class="textclasshead">Age of Housing Stock</div><br>
-<div class="textclass">The chart shown here depicts general trends in the age of housing stock in Arlington and surrounding communities. Age cohorts can be turned off by clicking the legend at the right. Hover over bars for more information on cohorts in specific municipalities </div> 
+<div class="textclass">The chart shown here depicts general trends in the age of housing stock in Lexington and surrounding communities. Age cohorts can be turned off by clicking the legend at the right. Hover over bars for more information on cohorts in specific municipalities </div> 
 <div id="BarChart"></div>
-<div class="textclass"; width="100%"; height="100px";>Arlington’s housing is relatively old. Local data show that the average age of housing units in Arlington is 81 years and the median year of construction is 1931. Similar conditions exist in other towns and small cities around Boston and Cambridge, while housing in outer parts of Middlesex County is newer</div>
+<div class="textclass"; width="100%"; height="100px";>Lexington’s housing is relatively old. Local data show that the average age of housing units in Lexington is 81 years and the median year of construction is 1931. Similar conditions exist in other towns and small cities around Boston and Cambridge, while housing in outer parts of Middlesex County is newer</div>
     <script type="text/javascript">
 //Start Bar Chart
 var svgBar = dimple.newSvg("#BarChart", "92%", "95%");
-    d3.csv("https://raw.githubusercontent.com/arlingtonplanning/masterplan/gh-pages/housing/AgeofHousingStock.csv", function (data) {
+    d3.csv("https://raw.githubusercontent.com/lexingtonplanning/masterplan/gh-pages/housing/AgeofHousingStock.csv", function (data) {
       dimple.filterData(data, "Municipality", ["Arlington", "Belmont", "Cambridge", "Lexington", "Medford", "Somerville", "Winchester", "Middlesex County", "Massachusetts"]);
 var BarChart = new dimple.chart(svgBar, data);
       BarChart.setBounds("15%", "5%", "65%", "75%");
