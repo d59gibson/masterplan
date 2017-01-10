@@ -11,7 +11,6 @@
 body {
     background-color: rgb(252,245,223);
 }
-
 #HHLineChart {    
 	float: right;
 	top:10px;
@@ -44,16 +43,17 @@ body {
 	  y1.fontSize = "11px";
 	  y2.fontSize = "11px";
 	  x.fontSize = "13px";
+	 
       var bars = HHLineChart.addSeries(null, dimple.plot.bar, [x,y2]);
 	  bars.barGap = 0.25;
-      var s = HHLineChart.addSeries(null, dimple.plot.line, [x, y1]);
+      var s = HHLineChart.addSeries("null", dimple.plot.line, [x, y1]);
       s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 4;
+	  s.lineColor = "red";
       x.addOrderRule("Date");
       HHLineChart.draw();
 	  y1.tickFormat = ",.2f";
-	  
       y2.tickFormat = ",.0f";
 	  
    window.onresize = function resize () {
